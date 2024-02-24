@@ -4,44 +4,49 @@
     <title>Gerador de Imagem</title>
     <style>
         body {
-            background-color: orange; /* 1. Fundo laranjinha */
-            text-align: center; /* 3. Centralizar a página */
+            background-color: rgb(195, 185, 87);
         }
-        h1 {
-            color: white; /* Texto branco para melhor legibilidade */
+        .container {
+            text-align: center;
+            font-size: 20px; /* Tamanho da fonte aumentado */
         }
-        #imagem-topo {
-            width: 50%; /* Tamanho da imagem ajustável */
-            display: block; /* Centralizar imagem */
-            margin: 0 auto; /* Centralizar imagem */
+        form {
+            display: inline-block;
+            text-align: left;
+            font-size: 18px; /* Tamanho da fonte aumentado */
+        }
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px; /* Tamanho da fonte aumentado */
         }
         input[type="text"], select {
-            font-size: 20px; /* 4. Aumentar o tamanho dos textos */
-            width: 50%; /* Largura ajustável */
-            padding: 10px; /* Espaçamento interno */
-            margin-bottom: 10px; /* Espaçamento inferior */
+            width: 300px; /* Largura aumentada */
         }
         input[type="submit"] {
-            font-size: 20px; /* 4. Aumentar o tamanho dos textos */
-            padding: 10px 20px; /* Espaçamento interno */
-            cursor: pointer; /* Alterar cursor ao passar por cima */
+            padding: 10px 20px;
+            font-size: 20px; /* Tamanho da fonte aumentado */
         }
     </style>
 </head>
 <body>
-    <h1>Gerador de Imagem</h1>
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ufpb.br%2Feducacaofinanceira%2Fcontents%2Fimagens%2Fbrasoes-universidades%2Fufma.png%2Fimage_view_fullscreen&psig=AOvVaw0LWQZxZGFF5jcRUUlQw0Zt&ust=1708892978966000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMj9ycnoxIQDFQAAAAAdAAAAABAE" alt="doctor">
-    <form action="/" method="post">
-        <label for="sigla">Sigla:</label><br>
-        <input type="text" id="sigla" name="sigla"><br>
-        <label for="extenso">Nome por Extenso:</label><br>
-        <input type="text" id="extenso" name="extenso"><br><br>
-        <label for="cor">Cor da Sigla:</label><br>
-        <select id="cor" name="cor">
-            <option value="black">Preto</option>
-            <option value="red">Vermelho</option>
-        </select><br><br>
-        <input type="submit" value="Gerar">
-    </form>
+    <div class="container">
+        <header>
+            <p><image src="https://img.hotimg.com/brasao-normal-topo.jpeg"></image></p>
+            <h1>Gerador de Imagem</h1>
+        </header>
+        <form action="/" method="post">
+            <label for="sigla">Sigla:</label>
+            <input type="text" id="sigla" name="sigla">
+            <label for="extenso">Nome por Extenso:</label>
+            <input type="text" id="extenso" name="extenso">
+            <label for="cor">Cor da Sigla:</label>
+            <select id="cor" name="cor">
+                <option value="black">Preto</option>
+                <option value="red">Vermelho</option>
+            </select>
+            <input type="submit" value="Gerar">
+        </form>
+    </div>
 </body>
 </html>
