@@ -20,12 +20,16 @@
             margin-bottom: 10px;
             font-size: 18px; /* Tamanho da fonte aumentado */
         }
-        input[type="text"], select {
+        input[type="text"], select#cor {
             width: 300px; /* Largura aumentada */
         }
         input[type="submit"] {
             padding: 10px 20px;
             font-size: 20px; /* Tamanho da fonte aumentado */
+        }
+        /* Reduzindo a largura do select apenas para o campo Cor da Sigla */
+        select#cor {
+            width: 100px; /* Reduzindo a largura apenas para o campo Cor da Sigla */
         }
     </style>
 </head>
@@ -45,7 +49,7 @@
                 <option value="black">Preto</option>
                 <option value="red">Vermelho</option>
             </select>
-            <input type="submit" value="Gerar">
+            <input type="submit" value="Gerar logo">
         </form>
     </div>
 </body>
