@@ -79,17 +79,17 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
     else:
         draw.text((x0_sigla + 7, 152), extenso, font=fonte_secundaria(20), fill="black")
     
-    imagem.save("/Baites/UFMA_logo/" + nome_arquivo_saida + ".png", dpi=(resolucao, resolucao))
+    imagem.save("/flask-test/" + nome_arquivo_saida + ".png", dpi=(resolucao, resolucao))
 
 ##########################################################################################################  
 def fonte_principal(sz):
     # Sua função para a fonte principal
-    return ImageFont.truetype("/Baites/UFMA_logo/assets/Montserrat-Bold.ttf", size=sz)
+    return ImageFont.truetype("/flask-test/assets/Montserrat-Bold.ttf", size=sz)
 
 ##########################################################################################################
 def fonte_secundaria(sz):
     # Sua função para a fonte secundária
-    return ImageFont.truetype("/Baites/UFMA_logo/assets/Montserrat-SemiBold.ttf", size=sz)
+    return ImageFont.truetype("/flask-test/assets/Montserrat-SemiBold.ttf", size=sz)
 
 # Rota para a página inicial
 @app.route('/', methods=['GET', 'POST'])
@@ -97,7 +97,7 @@ def index():
     if request.method == 'POST':
         sigla = request.form['sigla']
         extenso = request.form['extenso']
-        caminho_imagem = '/Baites/UFMA_logo/assets/brasao-normal.png'  # Substitua pelo caminho da sua imagem
+        caminho_imagem = '/flask-test/assets/brasao-normal.png'  # Substitua pelo caminho da sua imagem
         nome_do_arquivo = "logomarca_com_imagem_hd"
         cor_black = (0,0,0)
         gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_black, caminho_imagem, nome_do_arquivo, cor_pastel_dark,)
