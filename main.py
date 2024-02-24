@@ -84,12 +84,12 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
 ##########################################################################################################  
 def fonte_principal(sz):
     # Sua função para a fonte principal
-    return ImageFont.truetype("/flask-test/assets/Montserrat-Bold.ttf", size=sz)
+    return ImageFont.truetype("/assets/Montserrat-Bold.ttf", size=sz)
 
 ##########################################################################################################
 def fonte_secundaria(sz):
     # Sua função para a fonte secundária
-    return ImageFont.truetype("/flask-test/assets/Montserrat-SemiBold.ttf", size=sz)
+    return ImageFont.truetype("/assets/Montserrat-SemiBold.ttf", size=sz)
 
 # Rota para a página inicial
 @app.route('/', methods=['GET', 'POST'])
