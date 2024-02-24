@@ -2,9 +2,35 @@
 <html>
 <head>
     <title>Gerador de Imagem</title>
+    <style>
+        body {
+            background-color: orange; /* 1. Fundo laranjinha */
+            text-align: center; /* 3. Centralizar a página */
+        }
+        h1 {
+            color: white; /* Texto branco para melhor legibilidade */
+        }
+        #imagem-topo {
+            width: 50%; /* Tamanho da imagem ajustável */
+            display: block; /* Centralizar imagem */
+            margin: 0 auto; /* Centralizar imagem */
+        }
+        input[type="text"], select {
+            font-size: 20px; /* 4. Aumentar o tamanho dos textos */
+            width: 50%; /* Largura ajustável */
+            padding: 10px; /* Espaçamento interno */
+            margin-bottom: 10px; /* Espaçamento inferior */
+        }
+        input[type="submit"] {
+            font-size: 20px; /* 4. Aumentar o tamanho dos textos */
+            padding: 10px 20px; /* Espaçamento interno */
+            cursor: pointer; /* Alterar cursor ao passar por cima */
+        }
+    </style>
 </head>
 <body>
     <h1>Gerador de Imagem</h1>
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ufpb.br%2Feducacaofinanceira%2Fcontents%2Fimagens%2Fbrasoes-universidades%2Fufma.png%2Fimage_view_fullscreen&psig=AOvVaw0LWQZxZGFF5jcRUUlQw0Zt&ust=1708892978966000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMj9ycnoxIQDFQAAAAAdAAAAABAE" alt="doctor">
     <form action="/" method="post">
         <label for="sigla">Sigla:</label><br>
         <input type="text" id="sigla" name="sigla"><br>
