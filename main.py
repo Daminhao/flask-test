@@ -3,7 +3,13 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 
 app = Flask(__name__)
+
+# CORES
+cor_red = (141,3,51)
 cor_pastel_dark = (212,178,119)
+cor_black = (0,0,0)
+cor_branco = (255,255,255)
+
 def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_imagem, nome_arquivo_saida, cor_pastel_dark):
     largura = 900
     altura = 230
@@ -54,6 +60,10 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
     x0_sigla = 210
     draw.text((x0_sigla, 3), sigla, font=fonte_principal(122), fill=cor_sigla)
     
+    # Converter o nome por extenso para maiúsculas
+    extenso = extenso.upper()
+
+
     # Inserir nome por extenso
     if largura_texto_extenso > largura_linha - 20:
         words = extenso.split()
@@ -100,12 +110,20 @@ def index():
     if request.method == 'POST':
         sigla = request.form['sigla']
         extenso = request.form['extenso']
-        caminho_imagem = 'assets/brasao-normal.png'  # Substitua pelo caminho da sua imagem
+        cor_escolhida = request.form['cor']
+
+        if cor_escolhida == 'black':
+            cor_sigla = cor_black
+        elif cor_escolhida == 'red':
+            cor_sigla = cor_red
+        else:
+            # Caso padrão, utilize a cor preta
+            cor_sigla = cor_black
+        
+        caminho_imagem = 'assets/brasao-normal.png'
         nome_do_arquivo = "logomarca_com_imagem_hd"
-        cor_black = (0,0,0)
-        gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_black, caminho_imagem, nome_do_arquivo, cor_pastel_dark,)
+        gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_imagem, nome_do_arquivo, cor_pastel_dark)
         return send_file(nome_do_arquivo + ".png", as_attachment=True)
-        # return send_file(nome_do_arquivo + ".png", as_attachment=True, attachment_filename='/caminho/para/seu/diretorio/' + nome_do_arquivo + ".png")
     return render_template('index.html')
 
 if __name__ == '__main__':
