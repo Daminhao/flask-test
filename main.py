@@ -46,6 +46,9 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
                (x1_linha, 140)],
                fill=cor_pastel_dark,
                width=5)
+    
+    # Converter a sigla para maiúsculas
+    sigla = sigla.upper()
 
     # Inserir sigla
     x0_sigla = 210
