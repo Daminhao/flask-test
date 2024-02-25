@@ -114,14 +114,17 @@ def index():
 
         if cor_escolhida == 'black':
             cor_sigla = cor_black
+            cor_name = 'preto'
         elif cor_escolhida == 'red':
             cor_sigla = cor_red
+            cor_name = 'vermelho'
         else:
-            # Caso padrão, utilize a cor preta
+            # Default to black color
             cor_sigla = cor_black
+            cor_name = 'preto'
         
         caminho_imagem = 'assets/brasao-normal.png'
-        nome_do_arquivo = "logomarca_com_imagem_hd"
+        nome_do_arquivo = f"{sigla}_{cor_name}"
         gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_imagem, nome_do_arquivo, cor_pastel_dark)
         return send_file(nome_do_arquivo + ".png", as_attachment=True)
     return render_template('index.html')
