@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-# CORES
+# Cores
 cor_red = (141,3,51)
 cor_pastel_dark = (212,178,119)
 cor_black = (0,0,0)
@@ -15,16 +15,15 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
     altura = 230
     resolucao = 300
     
-    # Criar imagem em branco
-    imagem = Image.new("RGB", (largura, altura), color="white")
+    # Criar imagem transparente
+    imagem = Image.new("RGBA", (largura, altura), color=(255, 255, 255, 0))
     draw = ImageDraw.Draw(imagem)
 
     # Referências de tamanho
     largura_texto_sigla = draw.textlength(sigla, font=fonte_principal(122))
     largura_texto_extenso = draw.textlength(extenso, font=fonte_secundaria(20))
     
-        
-    # Inserir uma imagem em dimensões específicas
+    # Inserir uma imagem pré-definida
     brasao = Image.open(caminho_imagem).convert("RGBA")
     largura_brasao = 190
     altura_brasao = 190
@@ -33,14 +32,14 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
     brasao = brasao.resize((largura_brasao, altura_brasao))
     imagem.paste(brasao, (x_brasao, y_brasao), brasao)
     
-    # Inserir círculo em volta do brasão
+    # Desenhar um círculo ao redor da imagem
     raio = 95
     centro_x = x_brasao + 95
     centro_y = 99
     draw.ellipse((centro_x - raio, centro_y - raio, centro_x + raio, centro_y + raio),
                  outline=cor_pastel_dark, width=6)
 
-    # Inserir linha
+    # Desenhar uma linha
     x0_linha = 190
     if largura_texto_extenso > largura_texto_sigla + 70:
         x1_linha = x0_linha + largura_texto_sigla + 80
@@ -62,7 +61,6 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
     
     # Converter o nome por extenso para maiúsculas
     extenso = extenso.upper()
-
 
     # Inserir nome por extenso
     if largura_texto_extenso > largura_linha - 20:
@@ -92,16 +90,14 @@ def gerar_imagem_alta_definicao_com_imagem(sigla, extenso, cor_sigla, caminho_im
     else:
         draw.text((x0_sigla + 7, 152), extenso, font=fonte_secundaria(20), fill="black")
     
-    imagem.save("" + nome_arquivo_saida + ".png", dpi=(resolucao, resolucao))
+    imagem.save(nome_arquivo_saida + ".png", dpi=(resolucao, resolucao), format="PNG", optimize=True)
 
-##########################################################################################################  
 def fonte_principal(sz):
-    # Sua função para a fonte principal
+    # Função para definir a fonte principal
     return ImageFont.truetype("assets/Montserrat-Bold.ttf", size=sz)
 
-##########################################################################################################
 def fonte_secundaria(sz):
-    # Sua função para a fonte secundária
+    # Função para definir a fonte secundária
     return ImageFont.truetype("assets/Montserrat-SemiBold.ttf", size=sz)
 
 # Rota para a página inicial
@@ -119,7 +115,7 @@ def index():
             cor_sigla = cor_red
             cor_name = 'vermelho'
         else:
-            # Default to black color
+            # Padrão para cor preta
             cor_sigla = cor_black
             cor_name = 'preto'
         
